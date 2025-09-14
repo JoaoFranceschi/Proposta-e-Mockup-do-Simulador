@@ -54,6 +54,9 @@ g++ -o sistema "Sistema de Arquivos.cpp"
 - Dentro do executável clique em CREATE e siga o passo a passo
 
 <img width="634" height="497" alt="image" src="https://github.com/user-attachments/assets/0549c8b2-2b8d-45e1-89c8-e7ff1aadc073" />
+<img width="478" height="376" alt="image" src="https://github.com/user-attachments/assets/42e3f389-051b-4f44-a359-cc36646c6568" />
+<img width="488" height="375" alt="image" src="https://github.com/user-attachments/assets/d62525fd-5da6-44c4-8bb3-617602416e51" />
+
 
 ### 📂 1. Salvando o Código
 Salve o código-fonte em um arquivo, por exemplo:
