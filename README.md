@@ -77,8 +77,10 @@ Para executar o programa há dois métodos existentes
 
    - 2º Método: Após compilar, ir na pasta que esta o arquivo do programa e ir em `output`
      <img width="800" height="274" alt="image" src="https://github.com/user-attachments/assets/e0c6f7d3-a78a-4052-bbc1-dfd1f1c0d5de" />
+
      - Após entrar na pasta, executar o executável com o nome do programa
      <img width="808" height="150" alt="image" src="https://github.com/user-attachments/assets/0ff250b8-3e9b-4c13-a818-05c3b1182d29" />
+
      - Agora o programa sera executado no terminal do windows 
      <img width="1480" height="753" alt="image" src="https://github.com/user-attachments/assets/6c923c0a-d5e5-4d4a-bdb2-0c6693b7b3f4" />
 
