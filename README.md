@@ -7,7 +7,36 @@
 ---
 
 ## 🧪 Instruções de compilação/execução.
-### ✅ Pré-requisitos - Windows 11
+## ✅ Pré-requisitos - GNU/Linux
+- Compilador: `g++` com suporte a __C++17__ (ou superior)
+Para instalar o g++, execute (caso ainda não tenha):
+```bash
+sudo apt update
+sudo apt install g++
+```
+
+### 📂 1. Salvando o Código
+Salve o código-fonte em um arquivo, por exemplo:
+```bash
+Sistema de Arquivos.cpp
+```
+
+### 🧱 2. Compilando o Código
+No terminal, acesse a pasta onde está o arquivo e compile com:
+```bash
+g++ -o sistema "Sistema de Arquivos.cpp"
+```
+- `-o sistema` → define o nome do executável como `sistema`
+
+### 🚀 3. Executando o Programa
+- No terminal dentro da pasta que esta alocado o arquivo
+```bash
+./sistema
+```
+
+---
+
+## ✅ Pré-requisitos - Windows 11
 - Instalar extensões do C++ e Compile:
 
 <img width="457" height="274" alt="image" src="https://github.com/user-attachments/assets/52cdddec-f260-4482-af0e-81a8c479dbb9" />
@@ -17,4 +46,38 @@
 
 <img width="1262" height="908" alt="image" src="https://github.com/user-attachments/assets/9ab853d6-e49b-4398-86a6-90bad3b2c56a" />
 
--- Clique no link -> https://jmeubank.github.io/tdm-gcc/download/
+- Clique no link -> https://jmeubank.github.io/tdm-gcc/download/
+   - Baixe o executável
+
+<img width="1788" height="592" alt="image" src="https://github.com/user-attachments/assets/26b44b5b-9114-4b07-99ea-7b772dd90b7a" />
+
+- Dentro do executável clique em CREATE e siga o passo a passo
+
+<img width="634" height="497" alt="image" src="https://github.com/user-attachments/assets/0549c8b2-2b8d-45e1-89c8-e7ff1aadc073" />
+
+### 📂 1. Salvando o Código
+Salve o código-fonte em um arquivo, por exemplo:
+```bash
+Sistema de Arquivos.cpp
+```
+
+### 🧱 2. Compilando o Código
+Após a instalação do TDM-GCC, basta apenas que clique na execução do código dentro do VsCode
+
+<img width="1826" height="787" alt="image" src="https://github.com/user-attachments/assets/89c90a77-43f4-427f-a1f4-05a738542960" />
+
+### 🚀 3. Executando o Programa
+Para executar o programa há dois métodos existentes
+   - 1º Método: Executar pelo botao `Compile & Run`: Ele compilará e ira executar no terminal do próprio VsCode
+
+<img width="1192" height="450" alt="image" src="https://github.com/user-attachments/assets/aad8ef1b-548e-47d8-b0e8-f9a7c4bc5ae3" />
+
+   - 2º Método: Após compilar, ir na pasta que esta o arquivo do programa e ir em `output`
+     <img width="800" height="274" alt="image" src="https://github.com/user-attachments/assets/e0c6f7d3-a78a-4052-bbc1-dfd1f1c0d5de" />
+     - Após entrar na pasta, executar o executável com o nome do programa
+     <img width="808" height="150" alt="image" src="https://github.com/user-attachments/assets/0ff250b8-3e9b-4c13-a818-05c3b1182d29" />
+     - Agora o programa sera executado no terminal do windows 
+     <img width="1480" height="753" alt="image" src="https://github.com/user-attachments/assets/6c923c0a-d5e5-4d4a-bdb2-0c6693b7b3f4" />
+
+
+
