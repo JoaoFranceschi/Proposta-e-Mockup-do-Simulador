@@ -2,9 +2,9 @@
 
 ## Sumário
    - 👥 [Integrantes](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#-integrantes)
-   - 🗯️ [Informações sobre o projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto)
-   - ⚙️ [Descrição do Projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto)
-   - 🧪 Instruções de compilação/execução → [Linux](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#-pr%C3%A9-requisitos---gnulinux) e/ou [Windows](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#-pr%C3%A9-requisitos---windows-11)
+   - 🗯️ [Informações sobre o projeto]([https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto))
+   - ⚙️ [Descrição do Projeto]([https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto))
+   - 🧪 Instruções de compilação/execução → [Linux]([https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#-pr%C3%A9-requisitos---gnulinux](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto)) e/ou [Windows]([https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#-pr%C3%A9-requisitos---windows-11](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/edit/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto))
    -   Exemplo
 
 ## 👥 Integrantes
