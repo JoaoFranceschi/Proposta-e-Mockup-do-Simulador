@@ -9,6 +9,4 @@
 ## 🧪 Instruções de compilação/execução.
 ### ✅ Pré-requisitos - Windows 11
 - Instalar extensões do C++ e Compile:
-  ```bash
   <img width="450" height="271" alt="image" src="https://github.com/user-attachments/assets/e201f889-34ab-44fd-b933-3f95744ddd30" />
-  ```
