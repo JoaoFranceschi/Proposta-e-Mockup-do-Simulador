@@ -131,11 +131,6 @@ void criarArquivo(string nome, int tamanhoKB) {
         for (int i = 0; i < disco.size(); i++)
             if (disco[i] == '-') posLivres.push_back(i);
 
-        if (posLivres.size() < blocosNecessarios + 1) {
-            cout << "Erro: Espaco insuficiente.\n";
-            return;
-        }
-
         int blocoIndice = posLivres[0];
         disco[blocoIndice] = 'I';
         novo.blocoIndice = blocoIndice;
@@ -219,6 +214,9 @@ void estenderArquivo(string nome, int extraKB) {
         for (int i = 0; i < disco.size(); i++)
             if (disco[i] == '-') posLivres.push_back(i);
 
+        // Remove blocoIndice from posLivres if present
+        posLivres.erase(remove(posLivres.begin(), posLivres.end(), arq.blocoIndice), posLivres.end());
+
         if (posLivres.size() < blocosParaAdicionar) {
             cout << "Erro: Espaco insuficiente para estender.\n";
             return;
@@ -237,7 +235,7 @@ void deletarArquivo(string nome) {
     if (diretorio.count(nome) == 0) {
         cout << "Arquivo nao encontrado.\n"; return;
     }
-    Arquivo arq = diretorio[nome];
+    Arquivo &arq = diretorio[nome]; // Use reference
     for (int b : arq.blocos) disco[b] = '-';
     if (arq.blocoIndice != -1) disco[arq.blocoIndice] = '-';
     diretorio.erase(nome);
@@ -281,7 +279,7 @@ int main() {
     cout << "Simulador de Sistemas de Arquivos\n\n";
     cout << "Digite o tamanho do disco (em blocos): ";
     cin >> n;
-    resetarDisco(n);
+    //resetarDisco(n);
 
     while (true) {
         cout << "\nSeleção do metodo de alocacao:\n";
