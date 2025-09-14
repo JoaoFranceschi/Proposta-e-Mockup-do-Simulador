@@ -7,6 +7,8 @@
    - 🧪 Instruções de compilação/execução → [Linux](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-pr%C3%A9-requisitos---gnulinux) e/ou [Windows](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-pr%C3%A9-requisitos---windows-11)
    -   Exemplo
 
+---
+
 ## 👥 Integrantes
 - João Paulo da Silva Franceschi (188358@upf.br)
 - Octávio Francisco Petry Bortoluzzi (188380@upf.br)
