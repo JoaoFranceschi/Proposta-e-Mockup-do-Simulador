@@ -16,7 +16,9 @@
 ## ⚙️ Descrição do Projeto
 
    O projeto foi pensado para ajudar a compreender na prática o funcionamento de diferentes métodos de alocação em um sistema de arquivos. Para isso, impementamos um simulador em C++ que permite uma interação direta com um disco virtual, no que facilita a visualização de como os arquivos são armazenados, estendidos, lidos e removidos em diferentes métodos de alocação.
-  A interface foi planejada para ser simples e intuitiva para qualquer pessoa, utilizamos menus interativos no terminal, de forma que até usuários sem experiência em programação, consiga explorar as funcionalidades do nosso sistema. Para a representação do disco utilizamos blocos(`[ ]`), sua quantidade e tamanho são totalmente customizaveis, tudo isso para melhorar mostrar de maneira clara a distribuição dos arquivos no disco e ver como cada método de alocação reage aos espaços do disco.
+   
+  A interface foi planejada para ser simples e intuitiva para qualquer pessoa, utilizamos menus interativos no terminal, de forma que até usuários sem experiência em programação, consiga explorar as funcionalidades do nosso sistema. Para a representação do disco utilizamos blocos(`[]`), sua quantidade e tamanho são totalmente customizaveis, tudo isso para melhorar mostrar de maneira clara a distribuição dos arquivos no disco e ver como cada método de alocação reage aos espaços do disco.
+  
    Alem disso, o programa fornece métricas importantes — como a fragmentação interna e externa, utilização do disco e tempo de acesso(sequencial e aleatório) — premitindo o usuário avaliar o impacto de cada método em termos de desempenho e eficiência.
 
 ---
