@@ -21,14 +21,14 @@ int tamanhoBlocoKB;             // Tamanho fixo de bloco em KB (Alteravél pelo 
 int metodo = 1;                 // 1 = contíguo, 2 = encadeado, 3 = indexado
 string nomeMetodo[3] = {"Contiguo", "Encadeada", "Indexada"};
 
-// Função para exibir o disco
+// Função que exibe o estado atual do disco na tela
 void mostrarDisco() {
     int countBlocos = 0;       // contador de blocos usados
     cout << "\n=== Disco ===\n";
     for (char c : disco) {
         if(countBlocos == 8) { // Quebra de linha a cada 8 blocos
-            cout << "\n";      // Espaço a cada 4 blocos para melhor visualização
-            countBlocos = 0;   // Reseta o contador contador
+            cout << "\n";      
+            countBlocos = 0;   
         }
         cout << "[" << (c == '-' ? ' ' : c) << "]";   // 
         countBlocos++;
@@ -36,7 +36,7 @@ void mostrarDisco() {
     cout << "\n";
 }
 
-// Função para mostrar diretório
+// Função que exibe o diretório de arquivos, mostrando nome, tamanho e blocos ocupados
 void mostrarDiretorio() {
     cout << "\nDiretorio:\n";
     if (metodo == 1) {  // Para alocação contígua
@@ -44,7 +44,7 @@ void mostrarDiretorio() {
         cout << left << setw(10) << "Arquivo"
              << " | " << setw(8) << "Tamanho"
              << " | " << "Blocos\n" 
-             << "----------------------------------------\n";            
+             << "------------------------------\n";            
         for (auto &p : diretorio) {
             // Percorre cada arquivo no diretório e imprime suas informações
             cout << left << setw(10) << p.second.nome
@@ -93,7 +93,7 @@ void mostrarDiretorio() {
     }
 }
 
-// Calcular fragmentação interna
+// Calcula a fragmentação interna de um arquivo (espaço desperdiçado no último bloco)
 // O que é? fragmentação interna é o espaço desperdiçado dentro do último bloco alocado de um arquivo,
 // pois o arquivo pode não ocupar completamente o último bloco (devido ao tamanho fixo dos blocos).
 int calcularFragInterna(const Arquivo &arq) {
@@ -108,7 +108,7 @@ int calcularFragInterna(const Arquivo &arq) {
     return desperdicio;
 }
 
-// Calcular fragmentação externa (contígua)
+// Calcula a maior sequência de blocos livres contíguos (fragmentação externa)
 // O que é? Fragmentação externa refere-se ao espaço total de armazenamento que está
 // disponível, mas que não pode ser utilizado devido à falta de blocos contíguos.
 int calcularFragExterna() {
@@ -129,7 +129,7 @@ int calcularFragExterna() {
     return max(maiorSeq, atual);
 }
 
-// Criar arquivo
+// Cria um novo arquivo no disco, de acordo com o método de alocação selecionado
 void criarArquivo(string nome, int tamanhoKB) {
     if (diretorio.count(nome)) {
         cout << "Erro: Arquivo ja existe.\n"; 
@@ -150,14 +150,14 @@ void criarArquivo(string nome, int tamanhoKB) {
                     for (int j = inicio; j < inicio + blocosNecessarios; j++)
                         novo.blocos.push_back(j);
                     diretorio[nome] = novo;
-                    cout << "Arquivo " << nome << " criado (contiguo).\n";
+                    cout << ">> Arquivo " << nome << " criado (contiguo).\n";
                     return;
                 }
             } else {
                 livre = 0; inicio = -1;
             }
         }
-        cout << "Erro: Nao ha espaco contiguo suficiente.\n";
+        cout << ">> Erro: Nao ha espaco contiguo suficiente.\n";
     } else if (metodo == 2) { // Encadeada
         // Primeiro, encontre todos os blocos livres necessários
         vector<int> livres;
@@ -172,31 +172,17 @@ void criarArquivo(string nome, int tamanhoKB) {
                 novo.blocos.push_back(idx);
             }
             diretorio[nome] = novo;
-            cout << "Arquivo " << nome << " criado (encadeado).\n";
+            cout << ">> Arquivo " << nome << " criado (encadeado).\n";
         } else {
-            cout << "Erro: Espaco insuficiente.\n";
-        }
-    // } else if (metodo == 2) { // Encadeada
-    //     int alocados = 0;
-    //     for (int i = 0; i < disco.size() && alocados < blocosNecessarios; i++) {
-    //         if (disco[i] == '-') {
-    //             disco[i] = nome[0];
-    //             novo.blocos.push_back(i);
-    //             alocados++;
-    //         }
-    //     }
-    //     if (alocados == blocosNecessarios) {
-    //         diretorio[nome] = novo;
-    //         cout << "Arquivo " << nome << " criado (encadeado).\n";
-    //     } else cout << "Erro: Espaco insuficiente.\n";
-        
+            cout << ">> Erro: Espaco insuficiente.\n";
+        }        
     } else if (metodo == 3) { // Indexada
         vector<int> posLivres;
         for (int i = 0; i < disco.size(); i++)
             if (disco[i] == '-') posLivres.push_back(i);
 
         if (posLivres.size() < blocosNecessarios + 1) {
-            cout << "Erro: Espaco insuficiente.\n";
+            cout << ">> Erro: Espaco insuficiente.\n";
             return;
         }
 
@@ -209,14 +195,14 @@ void criarArquivo(string nome, int tamanhoKB) {
             novo.blocos.push_back(posLivres[i]);
         }
         diretorio[nome] = novo;
-        cout << "Arquivo " << nome << " criado (indexado).\n";
+        cout << ">> Arquivo " << nome << " criado (indexado).\n";
     }
 }
 
-// Estender arquivo
+// Estende um arquivo existente, alocando mais blocos se necessário
 void estenderArquivo(string nome, int extraKB) {
     if (diretorio.count(nome) == 0) {
-        cout << "Arquivo nao encontrado.\n";
+        cout << ">> Arquivo nao encontrado.\n";
         return;
     }
     Arquivo &arq = diretorio[nome];
@@ -226,7 +212,7 @@ void estenderArquivo(string nome, int extraKB) {
     int blocosParaAdicionar = blocosNecessarios - blocosAtuais;
     if (blocosParaAdicionar <= 0) {
         arq.tamanhoKB = novoTamanho;
-        cout << "Arquivo " << nome << " estendido (sem novos blocos).\n";
+        cout << ">> Arquivo " << nome << " estendido (sem novos blocos).\n";
         return;
     }
 
@@ -248,7 +234,7 @@ void estenderArquivo(string nome, int extraKB) {
                     for (int j = inicio; j < inicio + blocosNecessarios; j++)
                         arq.blocos.push_back(j);
                     arq.tamanhoKB = novoTamanho;
-                    cout << "Arquivo " << nome << " estendido (contiguo).\n";
+                    cout << ">> Arquivo " << nome << " estendido (contiguo).\n";
                     return;
                 }
             } else {
@@ -257,7 +243,7 @@ void estenderArquivo(string nome, int extraKB) {
         }
         // Se não conseguir, restaura os blocos antigos
         for (int b : antigos) disco[b] = nome[0];
-        cout << "Erro: Nao ha espaco contiguo suficiente para estender.\n";
+        cout << ">> Erro: Nao ha espaco contiguo suficiente para estender.\n";
     } else if (metodo == 2) { // Encadeada
         int alocados = 0;
         for (int i = 0; i < disco.size() && alocados < blocosParaAdicionar; i++) {
@@ -269,14 +255,14 @@ void estenderArquivo(string nome, int extraKB) {
         }
         if (alocados == blocosParaAdicionar) {
             arq.tamanhoKB = novoTamanho;
-            cout << "Arquivo " << nome << " estendido (encadeado).\n";
+            cout << ">> Arquivo " << nome << " estendido (encadeado).\n";
         } else {
             // Se não conseguir, desfaz
             for (int i = 0; i < alocados; i++) {
                 disco[arq.blocos.back()] = '-';
                 arq.blocos.pop_back();
             }
-            cout << "Erro: Espaco insuficiente para estender.\n";
+            cout << ">> Erro: Espaco insuficiente para estender.\n";
         }
     } else if (metodo == 3) { // Indexada
         vector<int> posLivres;
@@ -286,7 +272,7 @@ void estenderArquivo(string nome, int extraKB) {
         posLivres.erase(remove(posLivres.begin(), posLivres.end(), arq.blocoIndice), posLivres.end());
           
         if (posLivres.size() < blocosParaAdicionar) {
-            cout << "Erro: Espaco insuficiente para estender.\n";
+            cout << ">> Erro: Espaco insuficiente para estender.\n";
             return;
         }
         for (int i = 0; i < blocosParaAdicionar; i++) {
@@ -294,47 +280,49 @@ void estenderArquivo(string nome, int extraKB) {
             arq.blocos.push_back(posLivres[i]);
         }
         arq.tamanhoKB = novoTamanho;
-        cout << "Arquivo " << nome << " estendido (indexado).\n";
+        cout << ">> Arquivo " << nome << " estendido (indexado).\n";
     }
 }
 
-// Deletar arquivo
+// Remove um arquivo do disco e libera seus blocos
 void deletarArquivo(string nome) {
     if (diretorio.count(nome) == 0) {
-        cout << "Arquivo nao encontrado.\n"; return;
+        cout << ">> Arquivo nao encontrado.\n"; return;
     }
     Arquivo &arq = diretorio[nome]; // Use reference para evitar cópia desnecessária
     for (int b : arq.blocos) disco[b] = '-';
     if (arq.blocoIndice != -1) disco[arq.blocoIndice] = '-';
     diretorio.erase(nome);
-    cout << "Arquivo " << nome << " deletado.\n";
+    cout << ">> Arquivo " << nome << " deletado.\n";
 }
 
-// Ler arquivo
+// Simula a leitura de um arquivo, mostrando métricas de acesso e fragmentação
 void lerArquivo(string nome) {
     if (diretorio.count(nome) == 0) {
-        cout << "Arquivo nao encontrado.\n"; return;
+        cout << ">> Arquivo nao encontrado.\n"; return;
     }
     Arquivo arq = diretorio[nome];
-    cout << "Operacao: Ler Arquivo " << nome << "\n";
+    cout << "===============================================================================\n";
+    cout << ">> Operacao: Ler Arquivo " << nome << "\n";
 
     if (metodo == 1) {
         cout << "- Acesso sequencial: " << arq.blocos.size() << " passos\n";
-        cout << "- Acesso aleatorio (3º bloco): 1 passo\n";
+        cout << "- Acesso aleatorio (3o bloco): 1 passo\n";
     } else if (metodo == 2) {
         cout << "- Acesso sequencial: " << arq.blocos.size() + (arq.blocos.size()-1) << " passos\n";
-        cout << "- Acesso aleatorio (3º bloco): " << min(3, (int)arq.blocos.size()) << " passos\n";
+        cout << "- Acesso aleatorio (3o bloco): " << min(3, (int)arq.blocos.size()) << " passos\n";
     } else if (metodo == 3) {
         cout << "- Acesso sequencial: " << arq.blocos.size() + 1 << " passos\n";
-        cout << "- Acesso aleatorio (3º bloco): 2 passos\n";
+        cout << "- Acesso aleatorio (3o bloco): 2 passos\n";
     }
 
     cout << "Metricas:\n";
     cout << "- Fragmentacao interna: " << calcularFragInterna(arq) << " KB\n";
     cout << "- Fragmentacao externa: " << calcularFragExterna() << " blocos livres contiguos\n";
+    cout << "===============================================================================\n";
 }
 
-// Resetar disco
+// Limpa o disco e o diretório, reiniciando o sistema de arquivos
 void resetarDisco(int n) {
     disco.assign(n, '-');
     diretorio.clear();
@@ -346,17 +334,21 @@ int lerInteiro(const string& mensagem, int min = INT_MIN, int max = INT_MAX) {
     int valor;
     while (true) {
         cout << mensagem;
-        if (cin >> valor && valor >= min && valor <= max) {
-            cin.ignore(10000, '\n'); // Limpa o buffer
-            return valor;
-        } else {
+        if (!(cin >> valor)) {
             cout << "Entrada invalida: LETRAS, numeros MENORES que ZERO, e numeros fora das opcoes nao sao aceitos.\nTente novamente...\n";
             cin.clear();
             cin.ignore(10000, '\n');
+        } else if (valor < min || valor > max) {
+            cout << "Valor fora do intervalo permitido.\nTente novamente...\n";
+            cin.ignore(10000, '\n');
+        } else {
+            cin.ignore(10000, '\n'); // Limpa o buffer após leitura válida
+            return valor;
         }
     }
 }
 
+// Função principal: gerencia o menu, entrada do usuário e fluxo do programa
 int main(){
     int n;
     cout << "======================================\n";
@@ -389,27 +381,28 @@ int main(){
             cout << "| 4. Ler Arquivo" << endl;
             cout << "| 5. Resetar Disco" << endl;
             cout << "| 6. Sair" << endl;
+            
             opcao = lerInteiro("Escolha uma opcao: ", 1, 6);
 
             string nome;
             int tam, extra;
             switch (opcao) {
                 case 1:
-                    cout << "Nome do arquivo: "; cin.ignore(); getline(cin, nome);
+                    cout << "Nome do arquivo: "; getline(cin, nome);
                     tam = lerInteiro("Tamanho (KB): ", 1);
                     criarArquivo(nome, tam);
                     break;
                 case 2:
-                    cout << "Arquivo a estender(nome): "; cin.ignore(); getline(cin, nome);  
+                    cout << "Arquivo a estender(nome): "; getline(cin, nome);  
                     extra = lerInteiro("Tamanho extra (KB): ", 1);
                     estenderArquivo(nome, extra);
                     break;
                 case 3:
-                    cout << "Arquivo a deletar(nome): "; cin.ignore(); getline(cin, nome);
+                    cout << "Arquivo a deletar(nome): "; getline(cin, nome);
                     deletarArquivo(nome);
                     break;
                 case 4:
-                    cout << "Arquivo a ler: "; cin.ignore(); getline(cin, nome); 
+                    cout << "Arquivo a ler: "; getline(cin, nome); 
                     lerArquivo(nome);
                     break;
                 case 5:
