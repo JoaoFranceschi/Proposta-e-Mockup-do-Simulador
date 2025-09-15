@@ -108,20 +108,20 @@ Para executar o programa há dois métodos existentes
 
 ### Start
 ```bash
-======================================
-=== SIMULADOR SISTEMAS DE ARQUIVOS ===
-======================================
+=====================================================
+=== SIMULADOR DE ALOCACAO EM SISTEMAS DE ARQUIVOS ===
+=====================================================
 
-Digite o tamanho do disco (em blocos): 32
+Digite o tamanho do disco (em blocos): 16
 Digite o tamanho de cada bloco (em KB): 4
 >> Disco resetado.
 
 Selecione o metodo de alocacao:
 | 1. Contiguo
-| 2. Encadeada
-| 3. Indexada
+| 2. Encadeado
+| 3. Indexado
 | 4. Sair
-Escolha uma opcao:
+Escolha uma opcao: 
 ```
 
 ### Contiguo
@@ -162,28 +162,27 @@ Escolha uma opcao
 ### Encadeado
 ```bash
 ===============================================================================
->> Operacao: Ler Arquivo Berr Y
-- Acesso sequencial: 19 passos
-- Acesso aleatorio (3o bloco): 3 passos
+>> Operacao: Ler Arquivo A
+Qual bloco voce deseja simular o acesso aleatorio? (1 a 6): 5
+- Acesso sequencial: 11 passos
+- Acesso aleatorio (5o bloco): 5 passo(s)
 Metricas:
-- Fragmentacao interna: 0 KB
-- Fragmentacao externa: 1 blocos livres contiguos
+- Fragmentacao interna: 3 KB
+- Fragmentacao externa: 2 blocos livres contiguos
 ===============================================================================
 
 === Disco ===
-[A][A][A][A][B][B][B][B]
-[B][B][B][A][A][A][C][C]
-[C][C][C][C][C][C][C][C]
-[C][C][C][C][B][B][B][ ]
+[A][A][A][A][C][C][C][C]
+[C][ ][ ][A][A][D][D][D]
 
 Diretorio:
 Arquivo    | Tamanho        | 1o Bloco | Encadeamento
 -----------------------------------------------------
-Abobora    | 27KB           | 0        | 0->1->2->3->11->12->13
-Berr Y     | 40KB           | 4        | 4->5->6->7->8->9->10->28->29->30
-Cerol      | 56KB           | 14       | 14->15->16->17->18->19->20->21->22->23->24->25->26->27
+A          | 21KB           | 0        | 0->1->2->3->11->12
+C          | 17KB           | 4        | 4->5->6->7->8
+D          | 12KB           | 13       | 13->14->15
 
-[Metodo Encadeada] Menu:
+[Metodo Encadeado] Menu:
 | 1. Criar Arquivo
 | 2. Estender Arquivo
 | 3. Deletar Arquivo
