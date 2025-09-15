@@ -106,5 +106,124 @@ Para executar o programa há dois métodos existentes
 
 ## ⚙️ Exemplos de Execução
 
+### Start
+```bash
+======================================
+=== SIMULADOR SISTEMAS DE ARQUIVOS ===
+======================================
 
+Digite o tamanho do disco (em blocos): 32
+Digite o tamanho de cada bloco (em KB): 4
+>> Disco resetado.
+
+Selecione o metodo de alocacao:
+| 1. Contiguo
+| 2. Encadeada
+| 3. Indexada
+| 4. Sair
+Escolha uma opcao:
+```
+
+### Contiguo
+```bash
+===============================================================================
+>> Operacao: Ler Arquivo Cu ca
+- Acesso sequencial: 10 passos
+- Acesso aleatorio (3o bloco): 1 passo
+Metricas:
+- Fragmentacao interna: 0 KB
+- Fragmentacao externa: 4 blocos livres contiguos
+===============================================================================
+
+=== Disco ===
+[A][A][A][A][A][A][A][A]
+[A][B][B][B][B][B][B][ ]
+[ ][ ][ ][D][C][C][C][C]
+[C][C][C][C][C][C][ ][ ]
+
+Diretorio:
+Arquivo    | Tamanho  | Blocos
+------------------------------
+A          | 34KB     | 0 1 2 3 4 5 6 7 8
+Bob        | 21KB     | 9 10 11 12 13 14
+Cu ca      | 40KB     | 20 21 22 23 24 25 26 27 28 29
+Dado1      | 4KB      | 19
+
+[Metodo Contiguo] Menu:
+| 1. Criar Arquivo
+| 2. Estender Arquivo
+| 3. Deletar Arquivo
+| 4. Ler Arquivo
+| 5. Resetar Disco
+| 6. Sair
+Escolha uma opcao
+```
+
+### Encadeado
+```bash
+===============================================================================
+>> Operacao: Ler Arquivo Berr Y
+- Acesso sequencial: 19 passos
+- Acesso aleatorio (3o bloco): 3 passos
+Metricas:
+- Fragmentacao interna: 0 KB
+- Fragmentacao externa: 1 blocos livres contiguos
+===============================================================================
+
+=== Disco ===
+[A][A][A][A][B][B][B][B]
+[B][B][B][A][A][A][C][C]
+[C][C][C][C][C][C][C][C]
+[C][C][C][C][B][B][B][ ]
+
+Diretorio:
+Arquivo    | Tamanho        | 1o Bloco | Encadeamento
+-----------------------------------------------------
+Abobora    | 27KB           | 0        | 0->1->2->3->11->12->13
+Berr Y     | 40KB           | 4        | 4->5->6->7->8->9->10->28->29->30
+Cerol      | 56KB           | 14       | 14->15->16->17->18->19->20->21->22->23->24->25->26->27
+
+[Metodo Encadeada] Menu:
+| 1. Criar Arquivo
+| 2. Estender Arquivo
+| 3. Deletar Arquivo
+| 4. Ler Arquivo
+| 5. Resetar Disco
+| 6. Sair
+Escolha uma opcao:
+```
+
+### Indexado
+```bash
+===============================================================================
+>> Operacao: Ler Arquivo A
+- Acesso sequencial: 15 passos
+- Acesso aleatorio (3o bloco): 2 passos
+Metricas:
+- Fragmentacao interna: 2 KB
+- Fragmentacao externa: 3 blocos livres contiguos
+===============================================================================
+
+=== Disco ===
+[I][A][A][A][A][A][A][A]
+[A][A][A][A][A][I][C][C]
+[C][C][C][C][C][C][C][I]
+[B][B][B][A][A][ ][ ][ ]
+
+Diretorio:
+Arquivo    | Tamanho        | Bloco indice | Bloco de dados
+-----------------------------------------------------------
+A          | 54KB           | 0            | 1 2 3 4 5 6 7 8 9 10 11 12 27 28 
+B          | 12KB           | 23           | 24 25 26 
+C          | 34KB           | 13           | 14 15 16 17 18 19 20 21 22 
+
+[Metodo Indexada] Menu:
+| 1. Criar Arquivo
+| 2. Estender Arquivo
+| 3. Deletar Arquivo
+| 4. Ler Arquivo
+| 5. Resetar Disco
+| 6. Sair
+Escolha uma opcao:
+```
 
