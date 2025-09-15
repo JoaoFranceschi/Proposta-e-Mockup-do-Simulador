@@ -22,17 +22,17 @@
 ## 📒 Descrição do Projeto
    O tópico escolhido foi o 3 — Alocação em Sistemas de Arquivos.
    
-   O projeto foi pensado para ajudar a compreender na prática o funcionamento de diferentes métodos de alocação em um sistema de arquivos. Para isso, impementamos um simulador em C++ que permite uma interação direta com um disco virtual, no que facilita a visualização de como os arquivos são armazenados, estendidos, lidos e removidos nos diferentes métodos de alocação.
+   O projeto foi pensado para ajudar a compreender na prática o funcionamento de diferentes métodos de alocação em um sistema de arquivos. Para isso, implementamos um simulador em C++ que permite uma interação direta com um disco virtual, que facilita a visualização de como os arquivos são armazenados, estendidos, lidos e removidos nos diferentes métodos de alocação.
    
-   A interface foi planejada para ser simples e intuitiva, utilizamos menus interativos no terminal, de forma que até usuários sem experiência prévia em programação possam explorar as funcionalidades do nosso sistema. Elaboramos uma representação de disco em blocos(`[ ]`), incluimos a custumização total da sua quantidade(em blocos) e o tamanho de cada bloco(em KB),  permitindo observar de maneira clara a distribuição dos arquivos no disco e ver como cada estratégia de alocação reage aos espaços disponíveis do disco.
+   A interface foi planejada para ser simples e intuitiva, utilizamos menus interativos no terminal, de forma que até usuários sem experiência prévia em programação possam explorar as funcionalidades do nosso sistema. Elaboramos uma representação de disco em blocos(`[ ]`), incluimos a customização total da sua quantidade(em blocos) e o tamanho de cada bloco(em KB),  permitindo observar de maneira clara a distribuição dos arquivos no disco e ver como cada estratégia de alocação reage aos espaços disponíveis do disco.
    
-   Alem disso, o programa fornece métricas importantes — como a fragmentação interna e externa, utilização do disco e tempo de acesso(sequencial e aleatório) — premitindo o usuário avaliar o impacto de cada método em termos de desempenho e eficiência.
+   Alem disso, o programa fornece métricas importantes — como a fragmentação interna e externa, utilização do disco e tempo de acesso(sequencial e aleatório) — permitindo o usuário avaliar o impacto de cada método em termos de desempenho e eficiência.
 
 ---
 ## ⚖️ Instruções de compilação/execução(Linux e Windows)
 ### 🐧 Linux
 - Pré-requisito: Ter sistema GNU/Linux
-- Estensões VSCode: C/C++ Extension Pack by Microsoft
+- Extensões VSCode: C/C++ Extension Pack by Microsoft
 - Compilador: `g++` com suporte a __C++17__ (ou superior)
 Para instalar o g++, execute (caso ainda não tenha):
 ```bash
@@ -54,7 +54,7 @@ g++ -o sistema "Sistema de Arquivos.cpp"
 - `-o sistema` → define o nome do executável como `sistema`
 
 #### 🚀 3. Executando o Programa
-- No terminal dentro da pasta que esta alocado o arquivo
+- No terminal dentro da pasta que está alocado o arquivo
 ```bash
 ./sistema
 ```
@@ -63,7 +63,7 @@ g++ -o sistema "Sistema de Arquivos.cpp"
 
 ### 🪟 Windows
 - Pré-requisito: Ter sistema Windows
-- - Estensões VSCode: C/C++ Extension Pack by Microsoft e C/C++ Compile Run
+- - Extensões VSCode: C/C++ Extension Pack by Microsoft e C/C++ Compile Run
 <img width="457" height="274" alt="image" src="https://github.com/user-attachments/assets/52cdddec-f260-4482-af0e-81a8c479dbb9" />
 
 #### 🪄 Guia de Instalação do compilador TDM-GCC
