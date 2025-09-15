@@ -2,7 +2,7 @@
 
 ## Sumário
    - 🗯️ [Informações sobre o projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto)
-   - 📒 [Descrição do Projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-descri%C3%A7%C3%A3o-do-projeto)
+   - 📒 [Descrição do Projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-descri%C3%A7%C3%A3o-do-projeto)
    - ⚖️ Instruções de compilação/execução → [Linux](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-linux) e/ou [Windows](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-windows)
    - ⚙️ [Exemplos de Execução](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-exemplos-de-execu%C3%A7%C3%A3o)
 
