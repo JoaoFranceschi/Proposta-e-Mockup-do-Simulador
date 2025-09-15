@@ -1,24 +1,21 @@
 # 💾 SISTEMAS DE ARQUIVOS
 
 ## Sumário
-   - 👥 [Integrantes](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-integrantes)
    - 🗯️ [Informações sobre o projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-informa%C3%A7%C3%B5es-sobre-o-projeto)
    - 📒 [Descrição do Projeto](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-descri%C3%A7%C3%A3o-do-projeto)
-   - ⚖️ Instruções de compilação/execução → [Linux] e/ou [Windows]
-   -   Exemplo
-
----
-
-## 👥 Integrantes
-- João Paulo da Silva Franceschi (188358@upf.br)
-- Octávio Francisco Petry Bortoluzzi (188380@upf.br)
+   - ⚖️ Instruções de compilação/execução → [Linux](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-linux) e/ou [Windows](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#-windows)
+   - ⚙️ [Exemplos de Execução](https://github.com/JoaoFranceschi/Proposta-e-Mockup-do-Simulador/blob/main/README.md#%EF%B8%8F-exemplos-de-execu%C3%A7%C3%A3o)
 
 ---
 
 ## 🗯️ Informações sobre o projeto
+### 👥 Integrantes:
+- João Paulo da Silva Franceschi (188358@upf.br)
+- Octávio Francisco Petry Bortoluzzi (188380@upf.br)
+### 🔭 Especificações 
+- Ambiente: Visual Studio Code
 - Linguagem: C++
-- Interface: Terminal
-- Tópico 3: Alocação em Sistemas de Arquivos
+- Interface: Terminal com menu interativo
 
 ---
 
@@ -34,6 +31,7 @@
 ## ⚖️ Instruções de compilação/execução(Linux e Windows)
 ### 🐧 Linux
 - Pré-requisito: Ter sistema GNU/Linux
+- Estensões VSCode: C/C++ Extension Pack by Microsoft
 - Compilador: `g++` com suporte a __C++17__ (ou superior)
 Para instalar o g++, execute (caso ainda não tenha):
 ```bash
@@ -63,7 +61,8 @@ g++ -o sistema "Sistema de Arquivos.cpp"
 ---
 
 ### 🪟 Windows
-- Instalar extensões do C++ e Compile Run no VSCode:
+- Pré-requisito: Ter sistema Windows
+- - Estensões VSCode: C/C++ Extension Pack by Microsoft e C/C++ Compile Run
 <img width="457" height="274" alt="image" src="https://github.com/user-attachments/assets/52cdddec-f260-4482-af0e-81a8c479dbb9" />
 
 #### 🪄 Guia de Instalação do compilador TDM-GCC
