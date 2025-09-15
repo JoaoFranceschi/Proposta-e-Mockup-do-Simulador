@@ -3,7 +3,8 @@
 #include <vector>       // Para usar vector (disco)
 #include <map>          // Para usar map (tabela de diretório)
 #include <string>       // Para manipular strings
-#include <algorithm>    // std::max
+#include <algorithm>    // Para utilizar o "max"
+#include <climits>      // Para INT_MIN e INT_MAX
 
 using namespace std;    // Evita usar std:: antes de cout, cin, etc.
 
