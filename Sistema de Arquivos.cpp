@@ -305,15 +305,29 @@ void lerArquivo(string nome) {
     cout << "===============================================================================\n";
     cout << ">> Operacao: Ler Arquivo " << nome << "\n";
 
-    if (metodo == 1) {
+    int passosAleatorio = 1;
+    int blocoDesejado = 1;
+
+    if (metodo == 1) { // Contíguo
         cout << "- Acesso sequencial: " << arq.blocos.size() << " passos\n";
-        cout << "- Acesso aleatorio (3o bloco): 1 passo\n";
-    } else if (metodo == 2) {
+        cout << "- Acesso aleatorio (qualquer bloco): 1 passo\n";
+    } else if (metodo == 2) { // Encadeada
+        // Pergunta ao usuário qual bloco deseja acessar (1 a N)
+        if (!arq.blocos.empty()) {
+            cout << "Qual bloco voce deseja simular o acesso aleatorio? (1 a " << arq.blocos.size() << "): ";
+            cin >> blocoDesejado;
+            cin.ignore(10000, '\n');
+            if (blocoDesejado < 1 || blocoDesejado > arq.blocos.size()) {
+                cout << "Bloco invalido. Usando o 1o bloco.\n";
+                blocoDesejado = 1;
+            }
+        }
+        passosAleatorio = blocoDesejado;
         cout << "- Acesso sequencial: " << arq.blocos.size() + (arq.blocos.size()-1) << " passos\n";
-        cout << "- Acesso aleatorio (3o bloco): " << min(3, (int)arq.blocos.size()) << " passos\n";
-    } else if (metodo == 3) {
+        cout << "- Acesso aleatorio (" << blocoDesejado << "o bloco): " << passosAleatorio << " passo(s)\n";
+    } else if (metodo == 3) { // Indexada
         cout << "- Acesso sequencial: " << arq.blocos.size() + 1 << " passos\n";
-        cout << "- Acesso aleatorio (3o bloco): 2 passos\n";
+        cout << "- Acesso aleatorio (qualquer bloco): 2 passos\n";
     }
 
     cout << "Metricas:\n";
