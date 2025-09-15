@@ -66,7 +66,7 @@ void mostrarDiretorio() {
                  << " | " << setw(14) << (to_string(p.second.tamanhoKB) + "KB")
                  << " | ";
             if (!p.second.blocos.empty())
-                cout << setw(8) << p.second.blocos.front();
+                cout << setw(8) << p.second.blocos.front() << " | ";
             for (int b : p.second.blocos) {
                 // Imprime os blocos com setas entre eles
                 cout << b;
@@ -157,8 +157,7 @@ void criarArquivo(string nome, int tamanhoKB) {
                 livre = 0; inicio = -1;
             }
         }
-        cout << "Erro: Nao ha espaço contiguo suficiente.\n";
-
+        cout << "Erro: Nao ha espaco contiguo suficiente.\n";
     } else if (metodo == 2) { // Encadeada
         // Primeiro, encontre todos os blocos livres necessários
         vector<int> livres;
@@ -177,7 +176,20 @@ void criarArquivo(string nome, int tamanhoKB) {
         } else {
             cout << "Erro: Espaco insuficiente.\n";
         }
-
+    // } else if (metodo == 2) { // Encadeada
+    //     int alocados = 0;
+    //     for (int i = 0; i < disco.size() && alocados < blocosNecessarios; i++) {
+    //         if (disco[i] == '-') {
+    //             disco[i] = nome[0];
+    //             novo.blocos.push_back(i);
+    //             alocados++;
+    //         }
+    //     }
+    //     if (alocados == blocosNecessarios) {
+    //         diretorio[nome] = novo;
+    //         cout << "Arquivo " << nome << " criado (encadeado).\n";
+    //     } else cout << "Erro: Espaco insuficiente.\n";
+        
     } else if (metodo == 3) { // Indexada
         vector<int> posLivres;
         for (int i = 0; i < disco.size(); i++)
@@ -245,7 +257,7 @@ void estenderArquivo(string nome, int extraKB) {
         }
         // Se não conseguir, restaura os blocos antigos
         for (int b : antigos) disco[b] = nome[0];
-        cout << "Erro: Nao ha espaço contiguo suficiente para estender.\n";
+        cout << "Erro: Nao ha espaco contiguo suficiente para estender.\n";
     } else if (metodo == 2) { // Encadeada
         int alocados = 0;
         for (int i = 0; i < disco.size() && alocados < blocosParaAdicionar; i++) {
@@ -329,15 +341,29 @@ void resetarDisco(int n) {
     cout << ">> Disco resetado.\n";
 }
 
-int main() {
+// Função auxiliar para ler um inteiro válido
+int lerInteiro(const string& mensagem, int min = INT_MIN, int max = INT_MAX) {
+    int valor;
+    while (true) {
+        cout << mensagem;
+        if (cin >> valor && valor >= min && valor <= max) {
+            cin.ignore(10000, '\n'); // Limpa o buffer
+            return valor;
+        } else {
+            cout << "Entrada invalida: LETRAS, numeros MENORES que ZERO, e numeros fora das opcoes nao sao aceitos.\nTente novamente...\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+    }
+}
+
+int main(){
     int n;
     cout << "======================================\n";
     cout << "=== SIMULADOR SISTEMAS DE ARQUIVOS ===\n";
     cout << "======================================\n\n";
-    cout << "Digite o tamanho do disco (em blocos): ";
-    cin >> n;
-    cout << "Digite o tamanho de cada bloco (em KB): ";
-    cin >> tamanhoBlocoKB;
+    n = lerInteiro("Digite o tamanho do disco (em blocos): ", 1); // Garante que o tamanho do bloco seja pelo menos 1KB
+    tamanhoBlocoKB = lerInteiro("Digite o tamanho de cada bloco (em KB): ", 1); // Garante que o tamanho do bloco seja pelo menos 1KB
     resetarDisco(n);
 
     while (true) {
@@ -347,19 +373,13 @@ int main() {
         cout << "| 3. Indexada" << endl;
         cout << "| 4. Sair" << endl;
 
-        cin >> metodo;
+        metodo = lerInteiro("Escolha uma opcao: ", 1, 4);
         if (metodo == 4) break;
-        if (metodo < 1 || metodo > 4) {
-            cout << "Opcao invalida. Tente novamente.\n";
-            continue;
-        }
 
-        //resetarDisco(n); // Resetar disco ao trocar método
+        resetarDisco(n); // Resetar disco ao trocar método
 
         int opcao;
         do {
-            //system("cls");  // Limpa a tela no Windows
-            //system("clear"); // Limpa a tela no Linux/Mac
             mostrarDisco();
             mostrarDiretorio();
             cout << "\n[Metodo " << nomeMetodo[metodo - 1] << "] Menu:\n";
@@ -369,38 +389,36 @@ int main() {
             cout << "| 4. Ler Arquivo" << endl;
             cout << "| 5. Resetar Disco" << endl;
             cout << "| 6. Sair" << endl;
-            cin >> opcao;
+            opcao = lerInteiro("Escolha uma opcao: ", 1, 6);
 
-            if (opcao == 1) {
-                string nome; int tam;
-                cout << "Nome do arquivo: "; cin.ignore(); getline(cin, nome);
-                cout << "Tamanho (KB): ";
-                while (!(cin >> tam)) {
-                    cout << "Valor invalido! Digite um numero inteiro para o tamanho: ";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                criarArquivo(nome, tam);
-            } else if (opcao == 2) {
-                string nome; int extra;
-                cout << "Arquivo a estender: "; cin.ignore(); getline(cin, nome);
-                cout << "Tamanho extra (KB): ";
-                while (!(cin >> extra)) {
-                    cout << "Valor invalido! Digite um numero inteiro para o tamanho extra: ";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                estenderArquivo(nome, extra);
-            } else if (opcao == 3) {
-                string nome;
-                cout << "Arquivo a deletar: "; cin.ignore(); getline(cin, nome);
-                deletarArquivo(nome);
-            } else if (opcao == 4) {
-                string nome;
-                cout << "Arquivo a ler: "; cin.ignore(); getline(cin, nome);
-                lerArquivo(nome);
-            } else if (opcao == 5) {
-                resetarDisco(n);
+            string nome;
+            int tam, extra;
+            switch (opcao) {
+                case 1:
+                    cout << "Nome do arquivo: "; cin.ignore(); getline(cin, nome);
+                    tam = lerInteiro("Tamanho (KB): ", 1);
+                    criarArquivo(nome, tam);
+                    break;
+                case 2:
+                    cout << "Arquivo a estender(nome): "; cin.ignore(); getline(cin, nome);  
+                    extra = lerInteiro("Tamanho extra (KB): ", 1);
+                    estenderArquivo(nome, extra);
+                    break;
+                case 3:
+                    cout << "Arquivo a deletar(nome): "; cin.ignore(); getline(cin, nome);
+                    deletarArquivo(nome);
+                    break;
+                case 4:
+                    cout << "Arquivo a ler: "; cin.ignore(); getline(cin, nome); 
+                    lerArquivo(nome);
+                    break;
+                case 5:
+                    resetarDisco(n);
+                    break;
+                case 6:
+                    break;
+                default:
+                    cout << "Opcao invalida.\n";
             }
         } while (opcao != 6);
     }
