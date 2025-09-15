@@ -160,18 +160,23 @@ void criarArquivo(string nome, int tamanhoKB) {
         cout << "Erro: Nao ha espaço contiguo suficiente.\n";
 
     } else if (metodo == 2) { // Encadeada
-        int alocados = 0;
-        for (int i = 0; i < disco.size() && alocados < blocosNecessarios; i++) {
-            if (disco[i] == '-') {
-                disco[i] = nome[0];
-                novo.blocos.push_back(i);
-                alocados++;
-            }
+        // Primeiro, encontre todos os blocos livres necessários
+        vector<int> livres;
+        for (int i = 0; i < disco.size(); i++) {
+            if (disco[i] == '-') livres.push_back(i);
+            if (livres.size() == blocosNecessarios) break;
         }
-        if (alocados == blocosNecessarios) {
+        if (livres.size() == blocosNecessarios) {
+            // Só agora marque como ocupado e registre no arquivo
+            for (int idx : livres) {
+                disco[idx] = nome[0];
+                novo.blocos.push_back(idx);
+            }
             diretorio[nome] = novo;
             cout << "Arquivo " << nome << " criado (encadeado).\n";
-        } else cout << "Erro: Espaco insuficiente.\n";
+        } else {
+            cout << "Erro: Espaco insuficiente.\n";
+        }
 
     } else if (metodo == 3) { // Indexada
         vector<int> posLivres;
@@ -368,21 +373,31 @@ int main() {
 
             if (opcao == 1) {
                 string nome; int tam;
-                cout << "Nome do arquivo: "; cin >> nome;
-                cout << "Tamanho (KB): "; cin >> tam;
+                cout << "Nome do arquivo: "; cin.ignore(); getline(cin, nome);
+                cout << "Tamanho (KB): ";
+                while (!(cin >> tam)) {
+                    cout << "Valor invalido! Digite um numero inteiro para o tamanho: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 criarArquivo(nome, tam);
             } else if (opcao == 2) {
                 string nome; int extra;
-                cout << "Arquivo a estender: "; cin >> nome;
-                cout << "Tamanho extra (KB): "; cin >> extra;
+                cout << "Arquivo a estender: "; cin.ignore(); getline(cin, nome);
+                cout << "Tamanho extra (KB): ";
+                while (!(cin >> extra)) {
+                    cout << "Valor invalido! Digite um numero inteiro para o tamanho extra: ";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 estenderArquivo(nome, extra);
             } else if (opcao == 3) {
                 string nome;
-                cout << "Arquivo a deletar: "; cin >> nome;
+                cout << "Arquivo a deletar: "; cin.ignore(); getline(cin, nome);
                 deletarArquivo(nome);
             } else if (opcao == 4) {
                 string nome;
-                cout << "Arquivo a ler: "; cin >> nome;
+                cout << "Arquivo a ler: "; cin.ignore(); getline(cin, nome);
                 lerArquivo(nome);
             } else if (opcao == 5) {
                 resetarDisco(n);
