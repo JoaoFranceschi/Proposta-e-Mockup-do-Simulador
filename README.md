@@ -20,7 +20,8 @@
 ---
 
 ## 📒 Descrição do Projeto
-
+   O tópico escolhido foi o 3 — Alocação em Sistemas de Arquivos.
+   
    O projeto foi pensado para ajudar a compreender na prática o funcionamento de diferentes métodos de alocação em um sistema de arquivos. Para isso, impementamos um simulador em C++ que permite uma interação direta com um disco virtual, no que facilita a visualização de como os arquivos são armazenados, estendidos, lidos e removidos nos diferentes métodos de alocação.
    
    A interface foi planejada para ser simples e intuitiva, utilizamos menus interativos no terminal, de forma que até usuários sem experiência prévia em programação possam explorar as funcionalidades do nosso sistema. Elaboramos uma representação de disco em blocos(`[ ]`), incluimos a custumização total da sua quantidade(em blocos) e o tamanho de cada bloco(em KB),  permitindo observar de maneira clara a distribuição dos arquivos no disco e ver como cada estratégia de alocação reage aos espaços disponíveis do disco.
