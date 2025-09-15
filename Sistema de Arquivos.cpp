@@ -19,7 +19,7 @@ vector<char> disco;             // Representa os blocos
 map<string, Arquivo> diretorio; // Tabela de diretório
 int tamanhoBlocoKB;             // Tamanho fixo de bloco em KB (Alteravél pelo usuário)
 int metodo = 1;                 // 1 = contíguo, 2 = encadeado, 3 = indexado
-string nomeMetodo[3] = {"Contiguo", "Encadeada", "Indexada"};
+string nomeMetodo[3] = {"Contiguo", "Encadeado", "Indexado"};
 
 // Função que exibe o estado atual do disco na tela
 void mostrarDisco() {
