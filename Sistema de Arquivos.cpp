@@ -366,9 +366,9 @@ int lerInteiro(const string& mensagem, int min = INT_MIN, int max = INT_MAX) {
 // Função principal: gerencia o menu, entrada do usuário e fluxo do programa
 int main(){
     int n;
-    cout << "==================================================\n";
-    cout << "=== SIMULADOR DE ALOCACAO SISTEMAS DE ARQUIVOS ===\n";
-    cout << "==================================================\n\n";
+    cout << "=====================================================\n";
+    cout << "=== SIMULADOR DE ALOCACAO EM SISTEMAS DE ARQUIVOS ===\n";
+    cout << "=====================================================\n\n";
     n = lerInteiro("Digite o tamanho do disco (em blocos): ", 1); // Garante que o tamanho do bloco seja pelo menos 1KB
     tamanhoBlocoKB = lerInteiro("Digite o tamanho de cada bloco (em KB): ", 1); // Garante que o tamanho do bloco seja pelo menos 1KB
     resetarDisco(n);
