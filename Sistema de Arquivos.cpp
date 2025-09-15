@@ -375,8 +375,8 @@ int main(){
     while (true) {
         cout << "\nSelecione o metodo de alocacao:\n";
         cout << "| 1. Contiguo" << endl;
-        cout << "| 2. Encadeada" << endl;
-        cout << "| 3. Indexada" << endl;
+        cout << "| 2. Encadeado" << endl;
+        cout << "| 3. Indexado" << endl;
         cout << "| 4. Sair" << endl;
 
         metodo = lerInteiro("Escolha uma opcao: ", 1, 4);
