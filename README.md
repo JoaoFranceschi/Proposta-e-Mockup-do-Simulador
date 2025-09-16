@@ -127,27 +127,23 @@ Escolha uma opcao:
 ### Contiguo
 ```bash
 ===============================================================================
->> Operacao: Ler Arquivo Cu ca
-- Acesso sequencial: 10 passos
-- Acesso aleatorio (3o bloco): 1 passo
+>> Operacao: Ler Arquivo GG
+- Acesso sequencial: 1 passos
+- Acesso aleatorio (qualquer bloco): 1 passo
 Metricas:
-- Fragmentacao interna: 0 KB
-- Fragmentacao externa: 4 blocos livres contiguos
+- Fragmentacao interna: 3 KB
+- Fragmentacao externa: 0 blocos livres contiguos
 ===============================================================================
 
 === Disco ===
-[A][A][A][A][A][A][A][A]
-[A][B][B][B][B][B][B][ ]
-[ ][ ][ ][D][C][C][C][C]
-[C][C][C][C][C][C][ ][ ]
+[Z][B][B][B][B][B][B][G]
 
 Diretorio:
 Arquivo    | Tamanho  | Blocos
 ------------------------------
-A          | 34KB     | 0 1 2 3 4 5 6 7 8
-Bob        | 21KB     | 9 10 11 12 13 14
-Cu ca      | 40KB     | 20 21 22 23 24 25 26 27 28 29
-Dado1      | 4KB      | 19
+Bortoluzzi | 21KB     | 1 2 3 4 5 6
+GG         | 1KB      | 7
+Ze         | 2KB      | 0
 
 [Metodo Contiguo] Menu:
 | 1. Criar Arquivo
@@ -156,7 +152,7 @@ Dado1      | 4KB      | 19
 | 4. Ler Arquivo
 | 5. Resetar Disco
 | 6. Sair
-Escolha uma opcao
+Escolha uma opcao:
 ```
 
 ### Encadeado
@@ -195,28 +191,28 @@ Escolha uma opcao:
 ### Indexado
 ```bash
 ===============================================================================
->> Operacao: Ler Arquivo A
-- Acesso sequencial: 15 passos
-- Acesso aleatorio (3o bloco): 2 passos
+>> Operacao: Ler Arquivo D
+- Acesso sequencial: 7 passos
+- Acesso aleatorio (qualquer bloco): 2 passos
 Metricas:
-- Fragmentacao interna: 2 KB
-- Fragmentacao externa: 3 blocos livres contiguos
+- Fragmentacao interna: 0 KB
+- Fragmentacao externa: 5 blocos livres contiguos
 ===============================================================================
 
 === Disco ===
-[I][A][A][A][A][A][A][A]
-[A][A][A][A][A][I][C][C]
-[C][C][C][C][C][C][C][I]
-[B][B][B][A][A][ ][ ][ ]
+[I][A][A][A][I][D][A][A]
+[A][A][A][A][D][D][D][I]
+[C][C][C][C][C][C][C][C]
+[C][D][D][ ][ ][ ][ ][ ]
 
 Diretorio:
 Arquivo    | Tamanho        | Bloco indice | Bloco de dados
 -----------------------------------------------------------
-A          | 54KB           | 0            | 1 2 3 4 5 6 7 8 9 10 11 12 27 28 
-B          | 12KB           | 23           | 24 25 26 
-C          | 34KB           | 13           | 14 15 16 17 18 19 20 21 22 
+A          | 36KB           | 0            | 1 2 3 6 7 8 9 10 11
+C          | 34KB           | 15           | 16 17 18 19 20 21 22 23 24
+D          | 24KB           | 4            | 5 12 13 14 25 26
 
-[Metodo Indexada] Menu:
+[Metodo Indexado] Menu:
 | 1. Criar Arquivo
 | 2. Estender Arquivo
 | 3. Deletar Arquivo
